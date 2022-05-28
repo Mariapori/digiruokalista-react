@@ -25,12 +25,12 @@ function Ravintolalista() {
   }
   return (
     <div>
-    <div class="jumbotron">
-      <h1 class="display-4">Digiruokalista + React</h1>
-      <p class="lead">Ravintoloiden ruokalistat diginä.</p>
+    <div className="jumbotron p-2">
+      <h1 className="display-4">Digiruokalista + React</h1>
+      <p className="lead">Ravintoloiden ruokalistat diginä.</p>
     </div>
       <section>
-        <h2 id="titteli">Ravintolat</h2>
+        <h2 id="titteli" className='p-2'>Ravintolat</h2>
         <div id="ravintolalista">
           <table className='table table-dark'>
             <thead>
@@ -50,19 +50,20 @@ function Ravintolalista() {
           </table>
         </div>
         <div id="ravintola">
-          <h3 className='btn btn-primary' onClick={() => Palaa()}>Palaa listaan</h3>
+          <h3 className='btn btn-primary m-2' onClick={() => Palaa()}>Palaa listaan</h3>
           <CardGroup>
           {ravintola.map((kat)=>
-          <Card style={{ width: "18rem", margin: "0.5rem"}} bg="dark" text="light" key={kat.id}>
+          <Card style={{ maxWidth: "20rem", margin: "0.5rem"}} bg="dark" text="light" key={kat.id}>
             <Card.Body>
-            <Card.Title>{kat.nimi}</Card.Title>
+            <Card.Title>
+              {kat.nimi}
+              </Card.Title>
             <Card.Text>
             {kat.ruuat.map((ruoka) =>
-            <div> 
-            <p>{ruoka.annosNumero === 0 ? "" : ruoka.annosNumero + "."} {ruoka.nimi}</p>
+            <div key={ruoka.id}> 
+            <b>{ruoka.annosNumero === 0 ? "" : ruoka.annosNumero + "."} {ruoka.nimi}</b>
             <p>{ruoka.kuvaus}</p>
             <p>{ruoka.hinta.toFixed(2)}€</p>
-            <hr></hr>
             </div>
             )}
             </Card.Text>
