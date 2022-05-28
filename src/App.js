@@ -1,5 +1,6 @@
 import React from 'react';
 import Ravintolalista from './Ravintolalista';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
