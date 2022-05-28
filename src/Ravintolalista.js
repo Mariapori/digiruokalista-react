@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-
-
 function Ravintolalista() {
+  
   const [ravintolat,setRavintolat] = useState([]);
   useEffect(()=>{
     fetch("https://digiruokalista.com/api/v1/HaeYritykset")  
     .then(response => response.json())
     .then(data => setRavintolat(data))
-    .catch((reason) => alert(reason));
+    .catch(() => alert("Ruokalistoja ei voitu hakea."));
   },[]);
   return (
     <div>
@@ -29,7 +28,7 @@ function Ravintolalista() {
               {ravintolat.map((rafla) =>
                 <tr key={rafla.id}>
                   <td>{rafla.nimi}</td>
-                  <td>{rafla.kaupunki}</td>
+                  <td>{rafla.kaupunki}</td> 
                 </tr>
               )}
             </tbody>
