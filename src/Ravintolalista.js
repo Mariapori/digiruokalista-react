@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, CardGroup } from 'react-bootstrap';
 function Ravintolalista() {
   
   const [ravintolat,setRavintolat] = useState([]);
@@ -51,13 +51,25 @@ function Ravintolalista() {
         </div>
         <div id="ravintola">
           <h3 className='btn btn-primary' onClick={() => Palaa()}>Palaa listaan</h3>
+          <CardGroup>
           {ravintola.map((kat)=>
-          <Card bg="dark" text="light" key={kat.id}>
+          <Card style={{ width: "18rem", margin: "0.5rem"}} bg="dark" text="light" key={kat.id}>
             <Card.Body>
             <Card.Title>{kat.nimi}</Card.Title>
+            <Card.Text>
+            {kat.ruuat.map((ruoka) =>
+            <div> 
+            <p>{ruoka.annosNumero === 0 ? "" : ruoka.annosNumero + "."} {ruoka.nimi}</p>
+            <p>{ruoka.kuvaus}</p>
+            <p>{ruoka.hinta.toFixed(2)}€</p>
+            <hr></hr>
+            </div>
+            )}
+            </Card.Text>
             </Card.Body>
           </Card>
           )}  
+          </CardGroup>
         </div>
       </section>
     </div>
