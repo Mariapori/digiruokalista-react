@@ -10,7 +10,7 @@ function App() {
   }
   loadData();
   return (
-    <div className="App" onLoad={loadData}>
+    <div className="App">
       <header>
         <h1>Digiruokalista React</h1>
       </header>
